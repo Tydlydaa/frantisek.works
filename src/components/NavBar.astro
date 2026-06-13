@@ -1,0 +1,149 @@
+---
+// src/components/NavBar.astro
+// Active link based on current URL. Mobile: hamburger toggle via inline script.
+
+const pathname = Astro.url?.pathname ?? '/';
+
+const links = [
+  { label: 'Hlavou',             href: '/hlavou' },
+  { label: 'Rukama',             href: '/rukama' },
+  { label: 'Komunitně',          href: '/komunitne' },
+  { label: 'Studijní portfolio', href: '/studium' },
+  { label: 'Kontakt',            href: '/kontakt' },
+];
+---
+
+<nav class="nav">
+  <a href="/" class="wordmark">František</a>
+
+  <button class="hamburger" id="nav-toggle" aria-label="Menu" aria-expanded="false">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+
+  <ul class="nav-links" id="nav-links">
+    {links.map(l => (
+      <li>
+        <a
+          href={l.href}
+          class={pathname.startsWith(l.href) ? 'active' : ''}
+        >
+          {l.label}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const links  = document.getElementById('nav-links');
+  toggle?.addEventListener('click', () => {
+    const open = links?.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.classList.toggle('open', open);
+  });
+  // Close on nav click (mobile)
+  links?.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle?.setAttribute('aria-expanded', 'false');
+      toggle?.classList.remove('open');
+    })
+  );
+</script>
+
+<style>
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-md) var(--space-lg);
+    max-width: var(--container);
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* Wordmark */
+  .wordmark {
+    font-size: var(--text-md);
+    font-weight: var(--weight-medium);
+    color: var(--text);
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  /* Desktop links */
+  .nav-links {
+    display: flex;
+    gap: var(--space-lg);
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    opacity: 0.55;
+    transition: opacity var(--dur-fast) var(--ease);
+    white-space: nowrap;
+  }
+  .nav-links a:hover,
+  .nav-links a.active { opacity: 1; }
+
+  /* Hamburger — hidden on desktop */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    z-index: 20;
+  }
+  .bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: transform var(--dur-base) var(--ease), opacity var(--dur-fast) var(--ease);
+  }
+  /* Animate to × */
+  .hamburger.open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open .bar:nth-child(2) { opacity: 0; }
+  .hamburger.open .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .hamburger { display: flex; }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 0;
+      background: rgba(245, 243, 238, 0.97);
+      backdrop-filter: blur(8px);
+      border-bottom: 0.5px solid var(--border);
+      padding: var(--space-sm) var(--space-lg) var(--space-md);
+      z-index: 10;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { border-top: 0.5px solid var(--border); }
+    .nav-links a {
+      display: block;
+      padding: 14px 0;
+      font-size: var(--text-sm);
+      opacity: 0.7;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { opacity: 1; }
+  }
+</style>

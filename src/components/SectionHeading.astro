@@ -1,0 +1,47 @@
+---
+// src/components/SectionHeading.astro
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  tone?: 'coral' | 'gold' | 'mint' | 'blue';
+  align?: 'left' | 'center';
+}
+const { eyebrow, title, tone, align = 'left' } = Astro.props;
+---
+<div class:list={['section-heading', align === 'center' && 'center']}>
+  {eyebrow && (
+    <div class:list={['eyebrow', tone && `eyebrow--${tone}`]}>
+      {tone && <span class="dot" />}
+      {eyebrow}
+    </div>
+  )}
+  <h2>{title}</h2>
+</div>
+
+<style>
+  .section-heading { margin-bottom: 28px; }
+  .section-heading.center { text-align: center; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--text-xs);
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .eyebrow--coral .dot { background: var(--coral); }
+  .eyebrow--gold  .dot { background: var(--gold);  }
+  .eyebrow--mint  .dot { background: var(--mint);  }
+  .eyebrow--blue  .dot { background: var(--blue);  }
+  h2 {
+    font-size: var(--text-h2);
+    font-weight: var(--weight-medium);
+    line-height: var(--lh-snug);
+    color: var(--text);
+    margin: 0;
+  }
+</style>

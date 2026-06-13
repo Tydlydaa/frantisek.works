@@ -1,0 +1,31 @@
+---
+// src/pages/rukama/index.astro
+import { getCollection } from 'astro:content';
+import SectionIndex from '../../layouts/SectionIndex.astro';
+
+const entries = await getCollection('rukama', ({ data }) => !data.draft);
+---
+
+<SectionIndex
+  eyebrow="Rukama"
+  title="Vystudovaný tesař"
+  tone="gold"
+  world="rukama"
+  entries={entries}
+>
+  <div slot="intro">
+    <p>
+      Práce rukama je pro mě druhá strana téhož řemesla. Stejná logika jako service design —
+      pochopit materiál, pracovat v detailu, brát věci vážně. Jen médium je jiné.
+    </p>
+    <p>
+      <strong>Truhlářství Čeho třeba</strong> vzniklo jako prostor pro zakázkovou výrobu
+      s důrazem na materiál a trvanlivost. Každý kus vzniká v dialogu s klientem.
+      Sleduj na Instagramu: <a href="https://instagram.com/cehotreba">@cehotreba</a>.
+    </p>
+    <p>
+      Přes Studio Zenyš a Studio Baklažán stavíme dětská hřiště a pískoviště —
+      místa, kde si děti hrají bez návodu.
+    </p>
+  </div>
+</SectionIndex>

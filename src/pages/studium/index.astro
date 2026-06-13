@@ -1,0 +1,27 @@
+---
+// src/pages/studium/index.astro
+import { getCollection } from 'astro:content';
+import SectionIndex from '../../layouts/SectionIndex.astro';
+
+const entries = await getCollection('studium', ({ data }) => !data.draft);
+---
+
+<SectionIndex
+  eyebrow="Studijní portfolio"
+  title="Záznamy ze studia"
+  tone="blue"
+  world="studium"
+  entries={entries}
+>
+  <div slot="intro">
+    <p>
+      Záznamy ze studia na <strong>KISK/MU</strong> (Kabinet informačních studií a knihovnictví,
+      Masarykova univerzita) a z <strong>FF CUNI</strong>. Projekty, reflexe a výstupy —
+      spíš pro vlastní přehled než pro publikum.
+    </p>
+    <p>
+      Studium mě formovalo způsobem přemýšlení o systémech, informacích a lidech.
+      Ne konkrétními znalostmi, ale otázkami, které stojí za to si klást.
+    </p>
+  </div>
+</SectionIndex>

@@ -1,0 +1,33 @@
+---
+// src/pages/hlavou/index.astro
+import { getCollection } from 'astro:content';
+import SectionIndex from '../../layouts/SectionIndex.astro';
+
+const entries = await getCollection('hlavou', ({ data }) => !data.draft);
+---
+
+<SectionIndex
+  eyebrow="Hlavou"
+  title="Service designer a manažer"
+  tone="coral"
+  world="hlavou"
+  entries={entries}
+>
+  <div slot="intro">
+    <p>
+      Service design je o porozumění lidem a jejich potřebám — a o tom, jak to přetavit
+      do něčeho funkčního. Pracuju zároveň v detailu i ve velkém měřítku: nejdřív pochopit,
+      co lidé opravdu potřebují, pak navrhnout, jak to systémově udělat dobře.
+    </p>
+    <p>
+      Vedle projektové práce mentoruju, facilituju a radím organizacím, jak fungovat lépe.
+      Moje metody jsou ze service designu, ale výzvy jsou lidské — a ty se opakují
+      bez ohledu na odvětví.
+    </p>
+    <p>
+      <strong>Co o mně říká kolegyně Míša:</strong> „Zvídavý, do hloubky, do kontextu.
+      Vidí věci v různém měřítku — velké i malé. Máloco ho rozhodí.
+      Bezprostřední, parťácký, autentický — bez pózy."
+    </p>
+  </div>
+</SectionIndex>

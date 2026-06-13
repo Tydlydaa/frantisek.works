@@ -1,0 +1,42 @@
+---
+// src/components/Button.astro
+
+interface Props {
+  variant?: 'outline' | 'solid' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  href?: string;
+  class?: string;
+}
+const { variant = 'outline', size = 'md', href, class: cls } = Astro.props;
+const Tag = href ? 'a' : 'button';
+---
+<Tag
+  href={href}
+  class:list={['btn', `btn--${variant}`, `btn--${size}`, cls]}
+>
+  <slot />
+</Tag>
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font);
+    font-weight: var(--weight-medium);
+    border-radius: var(--r-pill);
+    text-decoration: none;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: opacity var(--dur-fast) var(--ease);
+    border: 1.5px solid transparent;
+  }
+  .btn:hover { opacity: 0.6; }
+  .btn--outline { background: transparent; color: var(--text); border-color: var(--text); }
+  .btn--solid   { background: var(--text);  color: var(--bg);  border-color: var(--text); }
+  .btn--ghost   { background: transparent;  color: var(--text); }
+  .btn--sm { padding: 0.35rem 0.9rem;  font-size: 0.8rem; }
+  .btn--md { padding: 0.5rem 1.25rem;  font-size: var(--text-sm); }
+  .btn--lg { padding: 0.7rem 1.6rem;   font-size: var(--text-md); }
+</style>

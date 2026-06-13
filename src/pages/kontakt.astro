@@ -1,0 +1,105 @@
+---
+// src/pages/kontakt.astro
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+---
+
+<Layout title="Kontakt — František Pfann">
+  <section class="contact">
+
+    <div class="dots" aria-hidden="true">
+      <span style="background:var(--coral)"></span>
+      <span style="background:var(--gold)"></span>
+      <span style="background:var(--mint)"></span>
+      <span style="background:var(--blue)"></span>
+    </div>
+
+    <h1>Ozvěte se.</h1>
+
+    <p class="lead">
+      Máte téma, co stojí za rozmyšlení? Projekt, kde by se hodil service designer?
+      Nebo jen chcete vědět, jestli umím vyrobit poličku? Napište.
+    </p>
+
+    <div class="actions">
+      <Button variant="solid" href="mailto:franta.pfann@gmail.com">
+        franta.pfann@gmail.com
+      </Button>
+      <Button href="https://linkedin.com/in/frantisek-pfann">
+        LinkedIn
+      </Button>
+    </div>
+
+    <div class="quote">
+      <blockquote>
+        „Bezprostřední, parťácký, autentický — bez pózy."
+      </blockquote>
+      <cite>— Míša, kolegyně</cite>
+    </div>
+
+  </section>
+</Layout>
+
+<style>
+  .contact {
+    padding: var(--space-xl) 0 calc(var(--space-xl) * 2);
+    max-width: 640px;
+  }
+
+  .dots {
+    display: flex;
+    gap: 9px;
+    margin-bottom: var(--space-lg);
+  }
+  .dots span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: block;
+  }
+
+  h1 {
+    font-size: var(--text-display);
+    font-weight: var(--weight-medium);
+    line-height: var(--lh-tight);
+    letter-spacing: -0.01em;
+    margin: 0 0 var(--space-md);
+  }
+
+  .lead {
+    font-size: var(--text-lg);
+    line-height: 1.6;
+    color: var(--muted);
+    max-width: 48ch;
+    margin: 0 0 var(--space-lg);
+  }
+
+  .actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: calc(var(--space-xl) * 1.2);
+  }
+
+  .quote {
+    border-top: 0.5px solid var(--border);
+    padding-top: var(--space-lg);
+  }
+  blockquote {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--text);
+    font-style: italic;
+    margin: 0 0 var(--space-sm);
+  }
+  cite {
+    font-size: var(--text-sm);
+    color: var(--muted);
+    font-style: normal;
+  }
+
+  @media (max-width: 640px) {
+    h1 { font-size: clamp(2rem, 9vw, 2.6rem); }
+    .lead { font-size: 1rem; }
+  }
+</style>

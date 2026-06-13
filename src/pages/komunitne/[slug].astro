@@ -1,0 +1,16 @@
+---
+// src/pages/komunitne/[slug].astro
+import { getCollection, render } from 'astro:content';
+import ProjectDetail from '../../layouts/ProjectDetail.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('komunitne', ({ data }) => !data.draft);
+  return entries.map(entry => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+<ProjectDetail entry={entry} backHref="/#komunitne" backLabel="Komunitně">
+  <Content />
+</ProjectDetail>

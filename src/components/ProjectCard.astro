@@ -1,0 +1,98 @@
+---
+// src/components/ProjectCard.astro
+// Karta projektu s tónovým pruhem, hover efektem a "číst více →" signálem.
+
+interface Props {
+  title: string;
+  description?: string;
+  tone?: 'coral' | 'gold' | 'mint' | 'blue';
+  tag?: string;
+  href?: string;
+  image?: string;
+}
+const { title, description, tone = 'coral', tag, href = '#', image } = Astro.props;
+---
+
+<a href={href} class:list={['card', `card--${tone}`]}>
+  {image
+    ? <div class="cover" style={`background-image: url(${image})`} />
+    : <div class="accent-bar" />
+  }
+  <div class="content">
+    {tag && <span class:list={['tag', `tag--${tone}`]}>{tag}</span>}
+    <h3>{title}</h3>
+    {description && <p>{description}</p>}
+    <span class="more">Číst více →</span>
+  </div>
+</a>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    background: var(--surface-2);
+    border: 0.5px solid var(--border);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition:
+      transform var(--dur-base) var(--ease),
+      box-shadow var(--dur-base) var(--ease);
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* Top visual */
+  .cover    { aspect-ratio: 16/10; background-size: cover; background-position: center; }
+  .accent-bar { height: 5px; opacity: 0.45; flex-shrink: 0; }
+  .card--coral .accent-bar { background: var(--coral); }
+  .card--gold  .accent-bar { background: var(--gold);  }
+  .card--mint  .accent-bar { background: var(--mint);  }
+  .card--blue  .accent-bar { background: var(--blue);  }
+
+  /* Body */
+  .content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 6px;
+  }
+
+  /* Tag */
+  .tag {
+    display: inline-block;
+    font-size: var(--text-2xs);
+    font-weight: var(--weight-medium);
+    border-radius: var(--r-pill);
+    padding: 3px 10px;
+    align-self: flex-start;
+  }
+  .tag--coral { background: var(--coral-bg); color: var(--coral-text); }
+  .tag--gold  { background: var(--gold-bg);  color: var(--gold-text);  }
+  .tag--mint  { background: var(--mint-bg);  color: var(--mint-text);  }
+  .tag--blue  { background: var(--blue-bg);  color: var(--blue-text);  }
+
+  h3 { font-size: var(--text-h3); font-weight: var(--weight-medium); color: var(--text); margin: 0; }
+  p  { color: var(--muted); font-size: var(--text-sm); line-height: 1.6; margin: 0; max-width: 38ch; }
+
+  /* "Číst více →" — appears on hover */
+  .more {
+    font-size: var(--text-xs);
+    color: var(--muted);
+    margin-top: auto;
+    padding-top: 10px;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition:
+      opacity var(--dur-base) var(--ease),
+      transform var(--dur-base) var(--ease);
+  }
+  .card:hover .more {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>

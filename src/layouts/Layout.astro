@@ -1,0 +1,47 @@
+---
+// src/layouts/Layout.astro
+import NavBar from '../components/NavBar.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = 'František Pfann',
+  description = 'Service designer, tesař a parťák do komunitních věcí.',
+} = Astro.props;
+---
+<!doctype html>
+<html lang="cs">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <title>{title} · frantisek.works</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <NavBar />
+    </header>
+    <main class="container">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(245, 243, 238, 0.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 0.5px solid var(--border);
+  }
+  .container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--space-lg);
+  }
+</style>

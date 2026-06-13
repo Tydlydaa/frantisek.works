@@ -1,0 +1,105 @@
+---
+// src/layouts/SectionIndex.astro
+// Sdílený layout pro výpisy sekce (/hlavou, /rukama, atd.)
+
+import Layout from './Layout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+interface Entry {
+  slug: string;
+  data: {
+    title: string;
+    description?: string;
+    tag: string;
+    tone: 'coral' | 'gold' | 'mint' | 'blue';
+    image?: string;
+    draft?: boolean;
+  };
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  tone: 'coral' | 'gold' | 'mint' | 'blue';
+  /** Slug části URL — 'hlavou', 'rukama', atd. */
+  world: string;
+  entries: Entry[];
+}
+
+const { eyebrow, title, tone, world, entries } = Astro.props;
+---
+
+<Layout title={`${eyebrow} — František Pfann`}>
+  <div class="section-index">
+
+    <nav class="breadcrumb">
+      <a href="/">← Zpět na začátek</a>
+    </nav>
+
+    <header class="section-header">
+      <SectionHeading eyebrow={eyebrow} tone={tone} title={title} />
+      {/* Prose intro — dodej přes <slot name="intro"> */}
+      <div class="intro">
+        <slot name="intro" />
+      </div>
+    </header>
+
+    <div class="grid">
+      {entries.map(p => (
+        <ProjectCard
+          tone={tone}
+          tag={p.data.tag}
+          title={p.data.title}
+          description={p.data.description}
+          href={`/${world}/${p.slug}`}
+          image={p.data.image}
+        />
+      ))}
+    </div>
+
+  </div>
+</Layout>
+
+<style>
+  .section-index {
+    padding: var(--space-xl) 0 calc(var(--space-xl) * 1.5);
+  }
+
+  .breadcrumb { margin-bottom: var(--space-lg); }
+  .breadcrumb a {
+    font-size: var(--text-sm);
+    color: var(--muted);
+    text-decoration: none;
+    transition: opacity var(--dur-fast) var(--ease);
+  }
+  .breadcrumb a:hover { opacity: 0.7; }
+
+  .section-header { margin-bottom: var(--space-xl); }
+
+  .intro {
+    max-width: 60ch;
+    margin-top: var(--space-md);
+  }
+  .intro :global(p) {
+    font-size: 1.05rem;
+    line-height: var(--lh);
+    color: var(--muted);
+    margin-bottom: var(--space-sm);
+  }
+  .intro :global(p strong) {
+    color: var(--text);
+    font-weight: var(--weight-medium);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  @media (max-width: 640px) {
+    .grid { grid-template-columns: 1fr; }
+    .section-index { padding: var(--space-lg) 0; }
+  }
+</style>
