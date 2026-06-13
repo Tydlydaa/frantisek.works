@@ -1,27 +1,139 @@
 ---
-// src/pages/studium/index.astro
-import { getCollection } from 'astro:content';
-import SectionIndex from '../../layouts/SectionIndex.astro';
+import { getCollection, getEntry, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
 
 const entries = await getCollection('studium', ({ data }) => !data.draft);
+const introEntry = await getEntry('intros', 'studium');
+const home = (await getEntry('intros', 'home'))!.data as Record<string, string>;
+const { Content: Intro } = await render(introEntry!);
+const tags = [...new Set(entries.map(e => e.data.tag))].sort();
 ---
 
-<SectionIndex
-  eyebrow="Studijní portfolio"
-  title="Záznamy ze studia"
-  tone="blue"
-  world="studium"
-  entries={entries}
->
-  <div slot="intro">
-    <p>
-      Záznamy ze studia na <strong>KISK/MU</strong> (Kabinet informačních studií a knihovnictví,
-      Masarykova univerzita) a z <strong>FF CUNI</strong>. Projekty, reflexe a výstupy —
-      spíš pro vlastní přehled než pro publikum.
-    </p>
-    <p>
-      Studium mě formovalo způsobem přemýšlení o systémech, informacích a lidech.
-      Ne konkrétními znalostmi, ale otázkami, které stojí za to si klást.
-    </p>
+<Layout title="Studijní portfolio — František Pfann">
+  <div class="section-index">
+
+    <nav class="breadcrumb">
+      <a href="/">← Zpět na začátek</a>
+    </nav>
+
+    <header class="section-header">
+      <SectionHeading eyebrow="Studijní portfolio" tone="blue" title={home.studium_title} />
+      <div class="intro">
+        <Intro />
+      </div>
+    </header>
+
+    <!-- Filtrování podle tagu -->
+    <div class="filters" id="filters">
+      <button class="filter-btn active" data-tag="all">Vše</button>
+      {tags.map(tag => (
+        <button class="filter-btn" data-tag={tag}>{tag}</button>
+      ))}
+    </div>
+
+    <!-- Karty -->
+    <div class="grid" id="grid">
+      {entries.map(p => (
+        <div class="card-wrap" data-tag={p.data.tag}>
+          <ProjectCard
+            tone="blue"
+            tag={p.data.tag}
+            date={p.data.date}
+            title={p.data.title}
+            description={p.data.description}
+            href={`/studium/${p.id}`}
+            image={p.data.image}
+          />
+        </div>
+      ))}
+    </div>
+
   </div>
-</SectionIndex>
+</Layout>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+  const cards = document.querySelectorAll<HTMLElement>('.card-wrap');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tag = btn.dataset.tag!;
+
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      cards.forEach(card => {
+        const match = tag === 'all' || card.dataset.tag === tag;
+        card.style.display = match ? '' : 'none';
+      });
+    });
+  });
+</script>
+
+<style>
+  .section-index {
+    padding: var(--space-xl) 0 calc(var(--space-xl) * 1.5);
+  }
+
+  .breadcrumb { margin-bottom: var(--space-lg); }
+  .breadcrumb a {
+    font-size: var(--text-sm);
+    color: var(--muted);
+    text-decoration: none;
+  }
+  .breadcrumb a:hover { opacity: 0.7; }
+
+  .section-header { margin-bottom: var(--space-lg); }
+  .intro { max-width: 60ch; margin-top: var(--space-md); }
+  .intro :global(p) {
+    font-size: 1.05rem;
+    line-height: var(--lh);
+    color: var(--muted);
+  }
+  .intro :global(strong) { color: var(--text); font-weight: 500; }
+
+  /* Filtry */
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: var(--space-lg);
+  }
+
+  .filter-btn {
+    font-family: var(--font);
+    font-size: var(--text-sm);
+    padding: 4px 14px;
+    border-radius: var(--r-pill);
+    border: 1.5px solid var(--border);
+    background: none;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .filter-btn:hover {
+    border-color: var(--blue);
+    color: var(--text);
+  }
+
+  .filter-btn.active {
+    background: var(--blue-bg);
+    border-color: var(--blue);
+    color: var(--blue-text);
+  }
+
+  /* Grid */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  @media (max-width: 640px) {
+    .grid { grid-template-columns: 1fr; }
+    .section-index { padding: var(--space-lg) 0; }
+  }
+</style>

@@ -13,6 +13,7 @@ interface Entry {
     description?: string;
     tag: string;
     tone: 'coral' | 'gold' | 'mint' | 'blue';
+    date?: string;
     image?: string;
     draft?: boolean;
   };
@@ -28,6 +29,13 @@ interface Props {
 }
 
 const { eyebrow, title, tone, world, entries } = Astro.props;
+
+const sortedEntries = [...entries].sort((a, b) => {
+  if (!a.data.date && !b.data.date) return 0;
+  if (!a.data.date) return 1;
+  if (!b.data.date) return -1;
+  return b.data.date.localeCompare(a.data.date);
+});
 ---
 
 <Layout title={`${eyebrow} — František Pfann`}>
@@ -46,10 +54,11 @@ const { eyebrow, title, tone, world, entries } = Astro.props;
     </header>
 
     <div class="grid">
-      {entries.map(p => (
+      {sortedEntries.map(p => (
         <ProjectCard
           tone={tone}
           tag={p.data.tag}
+          date={p.data.date}
           title={p.data.title}
           description={p.data.description}
           href={`/${world}/${p.slug}`}

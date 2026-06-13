@@ -1,11 +1,9 @@
 ---
 title: Čeho třeba
-description: Zakázkový nábytek a interiéry na míru. @cehotreba
+description: TODO — krátký popis projektu (1–2 věty), zobrazí se na kartě.
 tag: Truhlářství
 tone: gold
-date: "2023-01"
+draft: false
 ---
 
-Truhlářství Čeho třeba — zakázková výroba nábytku a interiérů na míru. Každý kus vzniká v dialogu s klientem, z materiálů s příběhem.
-
-Sleduj na Instagramu: [@cehotreba](https://instagram.com/cehotreba)
+TODO — napiš sem text projektu.

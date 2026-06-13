@@ -1,31 +1,22 @@
 ---
 // src/pages/komunitne/index.astro
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
 import SectionIndex from '../../layouts/SectionIndex.astro';
 
 const entries = await getCollection('komunitne', ({ data }) => !data.draft);
+const introEntry = await getEntry('intros', 'komunitne');
+const home = (await getEntry('intros', 'home'))!.data as Record<string, string>;
+const { Content: Intro } = await render(introEntry!);
 ---
 
 <SectionIndex
   eyebrow="Komunitně"
-  title="Komunita a dobrovolnictví"
+  title={home.komunitne_title}
   tone="mint"
   world="komunitne"
   entries={entries}
 >
   <div slot="intro">
-    <p>
-      Komunita vzniká, když lidé dělají věci spolu — ne proto, že musí,
-      ale protože to dává smysl. Moje role bývá ta, co věci rozjede a pak ustoupí,
-      aby to fungovalo samo.
-    </p>
-    <p>
-      <strong>Bike Kitchen Praha</strong> jsem zakládal jako prostor, kde si každý opraví kolo sám,
-      s pomocí ostatních. Dnes funguje bez mého každodenního přispění — to je ten nejlepší výsledek.
-    </p>
-    <p>
-      Dobrovolnicky vedu bary na festivalech — Vlčkovice fest, Čajovna na Povalči,
-      Zahrada ve Vrchlabí. Kombinace logistiky, lidí a dobré nálady.
-    </p>
+    <Intro />
   </div>
 </SectionIndex>

@@ -7,10 +7,20 @@ interface Props {
   description?: string;
   tone?: 'coral' | 'gold' | 'mint' | 'blue';
   tag?: string;
+  date?: string;
   href?: string;
   image?: string;
 }
-const { title, description, tone = 'coral', tag, href = '#', image } = Astro.props;
+const { title, description, tone = 'coral', tag, date, href = '#', image } = Astro.props;
+
+const MONTHS = ['leden','únor','březen','duben','květen','červen','červenec','srpen','září','říjen','listopad','prosinec'];
+function formatDate(d?: string) {
+  if (!d) return '';
+  const m = d.match(/^(\d{4})-(\d{2})$/);
+  if (m) return `${MONTHS[parseInt(m[2], 10) - 1]} ${m[1]}`;
+  return d;
+}
+const dateLabel = formatDate(date);
 ---
 
 <a href={href} class:list={['card', `card--${tone}`]}>
@@ -19,7 +29,10 @@ const { title, description, tone = 'coral', tag, href = '#', image } = Astro.pro
     : <div class="accent-bar" />
   }
   <div class="content">
-    {tag && <span class:list={['tag', `tag--${tone}`]}>{tag}</span>}
+    <div class="meta">
+      {tag && <span class:list={['tag', `tag--${tone}`]}>{tag}</span>}
+      {dateLabel && <span class="date">{dateLabel}</span>}
+    </div>
     <h3>{title}</h3>
     {description && <p>{description}</p>}
     <span class="more">Číst více →</span>
@@ -75,6 +88,23 @@ const { title, description, tone = 'coral', tag, href = '#', image } = Astro.pro
   .tag--gold  { background: var(--gold-bg);  color: var(--gold-text);  }
   .tag--mint  { background: var(--mint-bg);  color: var(--mint-text);  }
   .tag--blue  { background: var(--blue-bg);  color: var(--blue-text);  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .date {
+    display: inline-block;
+    font-size: var(--text-2xs);
+    font-weight: var(--weight-medium);
+    border-radius: var(--r-pill);
+    padding: 3px 10px;
+    background: var(--surface);
+    color: var(--muted);
+  }
 
   h3 { font-size: var(--text-h3); font-weight: var(--weight-medium); color: var(--text); margin: 0; }
   p  { color: var(--muted); font-size: var(--text-sm); line-height: 1.6; margin: 0; max-width: 38ch; }

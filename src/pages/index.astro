@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 
 // Načti projekty (max 3 na sekci pro homepage preview)
 const [hlavou, rukama, komunitne, studium] = await Promise.all([
@@ -13,6 +13,8 @@ const [hlavou, rukama, komunitne, studium] = await Promise.all([
   getCollection('komunitne', ({ data }) => !data.draft),
   getCollection('studium',   ({ data }) => !data.draft),
 ]);
+
+const home = (await getEntry('intros', 'home'))!.data as Record<string, string>;
 
 const PREVIEW = 3; // kolik karet zobrazit na homepage
 
@@ -27,17 +29,17 @@ type World = {
 };
 
 const worlds: World[] = [
-  { id:'hlavou',    eyebrow:'Hlavou',             tone:'coral', title:'Service designer a manažer',
-    intro:'Service design je o porozumění lidem a jejich potřebám — a o tom, jak to přetavit do něčeho funkčního.',
+  { id:'hlavou',    eyebrow:'Hlavou',             tone:'coral', title: home.hlavou_title,
+    intro: home.hlavou_intro,
     allHref:'/hlavou', entries: hlavou },
-  { id:'rukama',    eyebrow:'Rukama',             tone:'gold',  title:'Vystudovaný tesař',
-    intro:'Práce rukama je druhá strana téhož řemesla — řešit věci v detailu, materiálově, do hloubky.',
+  { id:'rukama',    eyebrow:'Rukama',             tone:'gold',  title: home.rukama_title,
+    intro: home.rukama_intro,
     allHref:'/rukama', entries: rukama },
-  { id:'komunitne', eyebrow:'Komunitně',          tone:'mint',  title:'Komunita a dobrovolnictví',
-    intro:'Věci, které dávají smysl, protože je dělají lidé spolu.',
+  { id:'komunitne', eyebrow:'Komunitně',          tone:'mint',  title: home.komunitne_title,
+    intro: home.komunitne_intro,
     allHref:'/komunitne', entries: komunitne },
-  { id:'studium',   eyebrow:'Studijní portfolio', tone:'blue',  title:'Záznamy ze studia',
-    intro:'Projekty a reflexe ze studia na KISK/MU a z FF CUNI.',
+  { id:'studium',   eyebrow:'Studijní portfolio', tone:'blue',  title: home.studium_title,
+    intro: home.studium_intro,
     allHref:'/studium', entries: studium },
 ];
 ---
@@ -53,14 +55,8 @@ const worlds: World[] = [
       <span class="dot" style="background:var(--blue)"></span>
     </div>
     <h1>František Pfann</h1>
-    <p class="lead">
-      Service designer, tesař a parťák do komunitních věcí.
-      Pracuji v detailu i ve velkém měřítku — od pochopení lidí po systémové návrhy.
-    </p>
-    <p class="sub">
-      Šířka záběru — tesař, service designer i bar na festivalu — pro mě není rozptýlení.
-      Je to způsob, jak vidět věci z více stran.
-    </p>
+    <p class="lead">{home.hero_lead}</p>
+    <p class="sub">{home.hero_sub}</p>
     <div class="cta-row">
       <Button variant="solid" href="/kontakt">Napsat mi</Button>
       <Button href="#hlavou">Co dělám</Button>

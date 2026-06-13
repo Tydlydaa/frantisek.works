@@ -146,6 +146,28 @@ const { title, description, tag, tone, image, date } = entry.data;
   .prose :global(li) { margin-bottom: var(--space-xs); }
   .prose :global(a)  { color: var(--text); text-underline-offset: 3px; }
   .prose :global(strong) { color: var(--text); font-weight: var(--weight-medium); }
+  .prose :global(.image-row) {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+  .prose :global(.image-row) :global(p) {
+    flex: 1 1 0;
+    min-width: 0;
+    margin: 0;
+  }
+  .prose :global(.image-row) :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--r-sm, 8px);
+    margin: 0;
+  }
+  @media (max-width: 640px) {
+    .prose :global(.image-row) {
+      flex-direction: column;
+    }
+  }
   .prose :global(blockquote) {
     border-left: 3px solid var(--border);
     margin: var(--space-md) 0;

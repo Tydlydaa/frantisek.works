@@ -17,4 +17,5 @@ export const collections = {
   rukama:    defineCollection({ loader: glob({ pattern: '**/*.md', base: './src/content/rukama' }),    schema: projectSchema }),
   komunitne: defineCollection({ loader: glob({ pattern: '**/*.md', base: './src/content/komunitne' }), schema: projectSchema }),
   studium:   defineCollection({ loader: glob({ pattern: '**/*.md', base: './src/content/studium' }),   schema: projectSchema }),
+  intros:    defineCollection({ loader: glob({ pattern: '**/*.md', base: './src/content/intros' }) }),
 };
