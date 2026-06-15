@@ -64,6 +64,7 @@ const slides = await Promise.all(
     ))}
 
   </div>
+  <div class="lightbox" id="lightbox"><img id="lightbox-img" src="" alt="" /></div>
 </Layout>
 
 <style>
@@ -167,7 +168,14 @@ const slides = await Promise.all(
   .prose :global(li) { margin-bottom: var(--space-xs); }
   .prose :global(a)  { color: var(--text); text-underline-offset: 3px; }
   .prose :global(strong) { color: var(--text); font-weight: var(--weight-medium); }
-  .prose :global(img) { max-width: 100%; border-radius: var(--r-sm, 8px); }
+  .prose :global(img) { max-width: 100%; border-radius: var(--r-sm, 8px); cursor: zoom-in; }
+  .lightbox {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.85); z-index: 200;
+    align-items: center; justify-content: center; cursor: zoom-out;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: var(--r-sm); object-fit: contain; }
   .prose :global(.image-row) {
     display: flex;
     gap: var(--space-sm);
@@ -223,4 +231,22 @@ const slides = await Promise.all(
   });
 
   render();
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox')!;
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+  function openLightbox(img: HTMLImageElement) {
+    lightboxImg.src = img.src; lightboxImg.alt = img.alt;
+    lightbox.classList.add('open'); document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
+  function bindImages() {
+    document.querySelectorAll<HTMLImageElement>('.prose img').forEach(img => {
+      img.onclick = () => openLightbox(img);
+    });
+  }
+  lightbox.addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  // Re-bind after each slide change (slides are already in DOM, so one-time bind is enough)
+  bindImages();
 </script>
