@@ -107,8 +107,9 @@ const slides = await Promise.all(
   .cover {
     aspect-ratio: 16 / 9;
     border-radius: var(--r-lg);
-    background-size: cover;
-    background-position: center;
+    background-size: contain;
+    background-position: top center;
+    background-repeat: no-repeat;
     margin-bottom: var(--space-lg);
     background-color: var(--surface);
   }
