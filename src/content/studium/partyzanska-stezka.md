@@ -1,9 +1,9 @@
 ---
 title: Partyzánská stezka — Case study
 description: Redesign části webu Partyzánské stezky — od výzkumu a testování s uživateli až po nasazení objednávkového a podpůrného systému přes Stripe.
-tag: UX design
+tag: Interakční design
 tone: blue
-date: "2025-02"
+date: 2025-02
 image: /img/partyzanska-stezka/01.jpg
 draft: false
 ---

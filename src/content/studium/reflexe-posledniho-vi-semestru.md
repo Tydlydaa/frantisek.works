@@ -1,9 +1,9 @@
 ---
 title: Reflexe posledního (VI semestru)
-description: "Bakalářka Bydlo, jazykové modely jako denní nástroj a workshop o budoucnosti festivalu."
+description: Bakalářka Bydlo, jazykové modely jako denní nástroj a workshop o budoucnosti festivalu.
 tag: Studijní seminář
 tone: blue
-date: "2025-06"
+date: 2026-06
 image: /img/reflexe-posledniho-vi-semestru/01.jpg
 draft: false
 ---

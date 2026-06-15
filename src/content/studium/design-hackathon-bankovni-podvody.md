@@ -3,7 +3,7 @@ title: Design hackathon — Bankovní podvody, jak se jich zbavíme?
 description: Účast na design hackathonu na téma bankovních podvodů.
 tag: Hackathon
 tone: blue
-date: "2024-06"
+date: 2024-01
 draft: false
 ---
 

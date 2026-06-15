@@ -3,7 +3,7 @@ title: Systemic Design and the Housing Crisis
 description: Prezentace na zkoušku z akademické angličtiny — proč dostupnost bydlení není jen ekonomický problém.
 tag: Akademická angličtina
 tone: blue
-date: "2025-05"
+date: 2026-01
 draft: false
 ---
 

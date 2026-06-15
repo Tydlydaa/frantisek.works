@@ -1,9 +1,9 @@
 ---
 title: Rozjezd truhlářskýho studia
 description: Jak se rozjíždí malé truhlářské studio — od nápadu k prvním zákazníkům.
-tag: Podnikání
+tag: Čeho třeba
 tone: blue
-date: "2025-01"
+date: 2026-01
 image: /img/rozjezd-truhlarskeho-studia/01.jpg
 draft: false
 ---

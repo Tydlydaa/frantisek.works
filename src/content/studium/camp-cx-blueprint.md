@@ -1,9 +1,9 @@
 ---
 title: Mapování návštěvnického zážitku v CAMPu
 description: Zákaznická cesta a service blueprint návštěvníků CAMPu — výstup z předmětu Service Design Mapping Experiences.
-tag: Service design
+tag: Customer journey
 tone: blue
-date: "2025-01"
+date: 2025-01
 draft: false
 ---
 

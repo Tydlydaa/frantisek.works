@@ -3,7 +3,7 @@ title: Reflexe — praxe IV — Workshop pro tajemníky
 description: Reflexe z workshopu pro tajemníky v rámci praxe IV.
 tag: Praxe
 tone: blue
-date: "2024-11"
+date: 2025-06
 draft: false
 ---
 

@@ -3,7 +3,7 @@ title: Jak jsme rozšířili náš výzkum o bariéry? — Reflexe předmětu Pr
 description: Reflexe předmětu Praxe II a rozšíření výzkumu o bariéry.
 tag: Praxe
 tone: blue
-date: "2024-09"
+date: 2024-06
 draft: false
 ---
 

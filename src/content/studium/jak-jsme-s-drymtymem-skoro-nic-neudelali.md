@@ -1,9 +1,9 @@
 ---
 title: Jak jsme s drýmtýmem za celý semestr (skoro) nic neudělali
 description: Reflexe z předmětu Praxe III a práce v drýmtýmu.
-tag: Studijní seminář
+tag: Praxe
 tone: blue
-date: "2024-11"
+date: 2024-12
 image: /img/jak-jsme-s-drymtymem-skoro-nic-neudelali/01.jpg
 draft: false
 ---

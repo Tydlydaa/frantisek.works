@@ -1,9 +1,9 @@
 ---
 title: Reflexe podzimního semestru druhého ročníku
-description: "Přetížený semestr, skvělý mentoring a jak mě mentee přivedl k Obsidianu."
+description: Přetížený semestr, mentoring a jak mě mentee přivedl k Obsidianu.
 tag: Studijní seminář
 tone: blue
-date: "2025-01"
+date: 2025-01
 draft: false
 ---
 
