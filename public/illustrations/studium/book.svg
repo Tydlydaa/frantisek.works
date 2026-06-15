@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  
+  <path d="M 100 168 L 16 158 L 16 40 L 100 48 Z" fill="#E4EEF8" stroke="#A8C4E0" stroke-width="6" stroke-linejoin="round"></path>
+  
+  <path d="M 100 168 L 184 158 L 184 40 L 100 48 Z" fill="#E4EEF8" stroke="#A8C4E0" stroke-width="6" stroke-linejoin="round"></path>
+  
+  <line x1="100" y1="48" x2="100" y2="168" stroke="#A8C4E0" stroke-width="7" stroke-linecap="round"></line>
+  
+  <line x1="28" y1="70" x2="88" y2="68" stroke="#A8C4E0" stroke-width="3" stroke-linecap="round"></line>
+  <line x1="28" y1="84" x2="86" y2="82" stroke="#A8C4E0" stroke-width="3" stroke-linecap="round"></line>
+  <line x1="28" y1="98" x2="84" y2="96" stroke="#A8C4E0" stroke-width="3" stroke-linecap="round"></line>
+  <line x1="28" y1="112" x2="88" y2="110" stroke="#A8C4E0" stroke-width="3" stroke-linecap="round"></line>
+  <line x1="28" y1="126" x2="78" y2="124" stroke="#A8C4E0" stroke-width="3" stroke-linecap="round"></line>
+  
+  <line x1="28" y1="88" x2="62" y2="86" stroke="#A8C4E0" stroke-width="4" stroke-linecap="round" opacity="0.7"></line>
+  
+  <line x1="112" y1="70" x2="172" y2="68" stroke="#A8C4E0" stroke-width="3" stroke-linecap="round"></line>
+  <line x1="112" y1="84" x2="170" y2="82" stroke="#A8C4E0" stroke-width="3" stroke-linecap="round"></line>
+  <line x1="112" y1="98" x2="168" y2="96" stroke="#A8C4E0" stroke-width="3" stroke-linecap="round"></line>
+  <line x1="112" y1="112" x2="172" y2="110" stroke="#A8C4E0" stroke-width="3" stroke-linecap="round"></line>
+  <line x1="112" y1="126" x2="160" y2="124" stroke="#A8C4E0" stroke-width="3" stroke-linecap="round"></line>
+  
+  <path d="M 176 80 L 180 80 L 180 96 L 176 96" stroke="#A8C4E0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+  <circle cx="183" cy="88" r="4" fill="#A8C4E0"></circle>
+</svg>

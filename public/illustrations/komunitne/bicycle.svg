@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  
+  <circle cx="55" cy="138" r="44" stroke="#8ECFBE" stroke-width="7"></circle>
+  
+  <circle cx="148" cy="138" r="44" stroke="#8ECFBE" stroke-width="7"></circle>
+  
+  <circle cx="55" cy="138" r="6" fill="#8ECFBE"></circle>
+  
+  <circle cx="148" cy="138" r="6" fill="#8ECFBE"></circle>
+  
+  <line x1="55" y1="138" x2="100" y2="106" stroke="#8ECFBE" stroke-width="5" stroke-linecap="round" opacity="0.7"></line>
+  <line x1="55" y1="138" x2="100" y2="130" stroke="#8ECFBE" stroke-width="5" stroke-linecap="round" opacity="0.7"></line>
+  
+  <line x1="100" y1="106" x2="148" y2="138" stroke="#8ECFBE" stroke-width="7" stroke-linecap="round"></line>
+  <line x1="100" y1="130" x2="148" y2="138" stroke="#8ECFBE" stroke-width="7" stroke-linecap="round"></line>
+  <line x1="100" y1="106" x2="100" y2="130" stroke="#8ECFBE" stroke-width="7" stroke-linecap="round"></line>
+  
+  <line x1="100" y1="106" x2="136" y2="96" stroke="#8ECFBE" stroke-width="7" stroke-linecap="round"></line>
+  
+  <line x1="148" y1="138" x2="136" y2="96" stroke="#8ECFBE" stroke-width="7" stroke-linecap="round"></line>
+  
+  <path d="M 90 104 L 114 100" stroke="#8ECFBE" stroke-width="8" stroke-linecap="round"></path>
+  
+  <path d="M 130 88 L 148 84 L 154 74" stroke="#8ECFBE" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>

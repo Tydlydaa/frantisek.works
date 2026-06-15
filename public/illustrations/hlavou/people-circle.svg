@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  
+  <circle cx="100" cy="100" r="62" stroke="#F08070" stroke-width="2.5" opacity="0.25"></circle>
+  
+  
+  <circle cx="100" cy="38" r="11" fill="#F08070"></circle>
+  <line x1="100" y1="49" x2="100" y2="84" stroke="#F08070" stroke-width="3" stroke-linecap="round" opacity="0.4"></line>
+  
+  <circle cx="159" cy="81" r="11" fill="#F08070"></circle>
+  <line x1="149" y1="86" x2="116" y2="93" stroke="#F08070" stroke-width="3" stroke-linecap="round" opacity="0.4"></line>
+  
+  <circle cx="136" cy="150" r="11" fill="#F08070"></circle>
+  <line x1="126" y1="143" x2="110" y2="113" stroke="#F08070" stroke-width="3" stroke-linecap="round" opacity="0.4"></line>
+  
+  <circle cx="64" cy="150" r="11" fill="#F08070"></circle>
+  <line x1="74" y1="143" x2="90" y2="113" stroke="#F08070" stroke-width="3" stroke-linecap="round" opacity="0.4"></line>
+  
+  <circle cx="41" cy="81" r="11" fill="#F08070"></circle>
+  <line x1="51" y1="86" x2="84" y2="93" stroke="#F08070" stroke-width="3" stroke-linecap="round" opacity="0.4"></line>
+  
+  <circle cx="100" cy="100" r="16" stroke="#F08070" stroke-width="5"></circle>
+</svg>

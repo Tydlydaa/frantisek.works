@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  
+  <rect x="30" y="28" width="24" height="130" rx="4" fill="#FEF8DC" stroke="#FAD04A" stroke-width="7"></rect>
+  
+  <rect x="30" y="134" width="124" height="24" rx="4" fill="#FEF8DC" stroke="#FAD04A" stroke-width="7"></rect>
+  
+  <line x1="54" y1="60" x2="64" y2="60" stroke="#FAD04A" stroke-width="3.5" stroke-linecap="round"></line>
+  <line x1="54" y1="80" x2="64" y2="80" stroke="#FAD04A" stroke-width="3.5" stroke-linecap="round"></line>
+  <line x1="54" y1="100" x2="64" y2="100" stroke="#FAD04A" stroke-width="3.5" stroke-linecap="round"></line>
+  <line x1="54" y1="120" x2="64" y2="120" stroke="#FAD04A" stroke-width="3.5" stroke-linecap="round"></line>
+  
+  <line x1="80" y1="134" x2="80" y2="124" stroke="#FAD04A" stroke-width="3.5" stroke-linecap="round"></line>
+  <line x1="104" y1="134" x2="104" y2="124" stroke="#FAD04A" stroke-width="3.5" stroke-linecap="round"></line>
+  <line x1="128" y1="134" x2="128" y2="124" stroke="#FAD04A" stroke-width="3.5" stroke-linecap="round"></line>
+  
+  <path d="M 118 32 L 162 100" stroke="#FAD04A" stroke-width="8" stroke-linecap="round"></path>
+  
+  <path d="M 158 96 L 168 112 L 152 108 Z" fill="#FAD04A"></path>
+  
+  <rect x="110" y="24" width="16" height="12" rx="3" fill="#FAD04A" opacity="0.5" stroke="#FAD04A" stroke-width="4"></rect>
+</svg>

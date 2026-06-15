@@ -20,3 +20,7 @@ Pak jsme se koukli na to co už jsme zjistili v prvním části výzkumu. (Máme
 Praxe byla přínosná, spolupráce s Johankou taky. Ač docela dlouho jsem se snažil pochopit, k čemu celý předmět je. A jak ho správně uchopit, abychom nedělali zbytečnou práci, když smysluplné práce děláme dost ve škole i mimo ní na jiných předmětech. Tím, že jsme výzkum uchopili docela zeširoka, udělali na něm hodně práce a máme v plánu s ním ještě dost pracovat, tak nám moc nedávalo smysl dělat extra praxe II na téma mimo. A to, že jsme na závěrečné konferenci neměli prezentovat výzkum na kterém jsme odmakali přes sto hodin každý z nás, ale praxi, která měla mít alespoň 20 hodin a nebyla pro nás to nejdůležitější během tohohle semestru nám zas tak nedávalo smysl. Ale to neva.
 
 Těš se na výsledky našeho výzkumu na podzim. A ahoj!
+
+---
+
+<iframe src="/pdf/mapovani-barier.pdf" width="100%" height="620px" style="border:none; border-radius: 8px;"></iframe>

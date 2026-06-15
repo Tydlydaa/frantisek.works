@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  
+  <circle cx="100" cy="100" r="82" stroke="#1D364E" stroke-width="4" opacity="0.15"></circle>
+  
+  <line x1="100" y1="18" x2="100" y2="32" stroke="#1D364E" stroke-width="5" stroke-linecap="round" opacity="0.3"></line>
+  <line x1="100" y1="168" x2="100" y2="182" stroke="#1D364E" stroke-width="5" stroke-linecap="round" opacity="0.3"></line>
+  <line x1="18" y1="100" x2="32" y2="100" stroke="#1D364E" stroke-width="5" stroke-linecap="round" opacity="0.3"></line>
+  <line x1="168" y1="100" x2="182" y2="100" stroke="#1D364E" stroke-width="5" stroke-linecap="round" opacity="0.3"></line>
+  
+  <path d="M 100 100 L 148 52" stroke="#F08070" stroke-width="7" stroke-linecap="round"></path>
+  <polygon points="148,52 138,60 154,66" fill="#F08070"></polygon>
+  
+  <path d="M 100 100 L 54 150" stroke="#1D364E" stroke-width="7" stroke-linecap="round" opacity="0.35"></path>
+  
+  <circle cx="100" cy="100" r="8" fill="#1D364E"></circle>
+</svg>

@@ -7,7 +7,7 @@ import Button from '../components/Button.astro';
 <Layout title="Kontakt — František Pfann">
   <section class="contact">
 
-    <div class="dots" aria-hidden="true">
+    <div class="hero-bars" aria-hidden="true">
       <span style="background:var(--coral)"></span>
       <span style="background:var(--gold)"></span>
       <span style="background:var(--mint)"></span>
@@ -46,15 +46,15 @@ import Button from '../components/Button.astro';
     max-width: 640px;
   }
 
-  .dots {
+  .hero-bars {
     display: flex;
-    gap: 9px;
+    gap: 8px;
     margin-bottom: var(--space-lg);
   }
-  .dots span {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
+  .hero-bars span {
+    width: 28px;
+    height: 5px;
+    border-radius: 2px;
     display: block;
   }
 

@@ -48,13 +48,13 @@ const worlds: World[] = [
 
   <!-- ── Hero ───────────────────────────────── -->
   <section class="hero">
-    <div class="hero-dots" aria-hidden="true">
-      <span class="dot" style="background:var(--coral)"></span>
-      <span class="dot" style="background:var(--gold)"></span>
-      <span class="dot" style="background:var(--mint)"></span>
-      <span class="dot" style="background:var(--blue)"></span>
+    <div class="hero-bars" aria-hidden="true">
+      <span style="background:var(--coral)"></span>
+      <span style="background:var(--gold)"></span>
+      <span style="background:var(--mint)"></span>
+      <span style="background:var(--blue)"></span>
     </div>
-    <h1>František Pfann</h1>
+    <h1>{home.hero_title}</h1>
     <p class="lead">{home.hero_lead}</p>
     <p class="sub">{home.hero_sub}</p>
     <div class="cta-row">
@@ -108,8 +108,8 @@ const worlds: World[] = [
     padding: var(--space-xl) 0 var(--space-lg);
     position: relative;
   }
-  .hero-dots { display: flex; gap: 9px; margin-bottom: 22px; }
-  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .hero-bars { display: flex; gap: 8px; margin-bottom: 22px; }
+  .hero-bars span { width: 28px; height: 5px; border-radius: 2px; display: block; }
   h1 {
     font-size: var(--text-display);
     font-weight: var(--weight-medium);

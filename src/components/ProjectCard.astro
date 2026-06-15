@@ -1,38 +1,75 @@
 ---
 // src/components/ProjectCard.astro
-// Karta projektu s tónovým pruhem, hover efektem a "číst více →" signálem.
+// Karta projektu s cover obrázkem nebo ilustračním placeholderem.
+// Bez fotky se zobrazí tónová plocha s ilustrací sekce — všechny
+// karty v řádku mají stejnou výšku díky aspect-ratio + flexbox.
+//
+// Ilustrace se vybere takto (sestupná priorita):
+//  1. frontmatter pole `illustration: "tree-rings"` (stem, bez cesty a .svg)
+//  2. prop `cardIndex` — rotace přes seznam ilustrací sekce
+//  3. první ilustrace dané sekce
 
 interface Props {
   title: string;
   description?: string;
   tone?: 'coral' | 'gold' | 'mint' | 'blue';
   tag?: string;
-  date?: string;
   href?: string;
+  /** URL fotky. Když chybí, zobrazí se ilustrace sekce. */
   image?: string;
+  /**
+   * Stem ilustrace z frontmatteru (např. "tree-rings").
+   * Přepíše automatickou rotaci.
+   */
+  illustration?: string;
+  /** Pořadí karty v sekci — pro automatickou rotaci ilustrací. */
+  cardIndex?: number;
 }
-const { title, description, tone = 'coral', tag, date, href = '#', image } = Astro.props;
 
-const MONTHS = ['leden','únor','březen','duben','květen','červen','červenec','srpen','září','říjen','listopad','prosinec'];
-function formatDate(d?: string) {
-  if (!d) return '';
-  const m = d.match(/^(\d{4})-(\d{2})$/);
-  if (m) return `${MONTHS[parseInt(m[2], 10) - 1]} ${m[1]}`;
-  return d;
+// Dostupné ilustrace per tón (stem → full public path)
+const ILLUSTRATIONS: Record<string, string[]> = {
+  coral: ['double-diamond','journey-map','postits','people-circle','magnifier','layers','venn'],
+  gold:  ['tree-rings','square-pencil','tools','playground','wood-joint'],
+  mint:  ['bicycle','glass','network','campfire','hands'],
+  blue:  ['loop','book','flow-diagram','timeline'],
+};
+
+// Složky per tón
+const TONE_DIR: Record<string, string> = {
+  coral: 'hlavou',
+  gold:  'rukama',
+  mint:  'komunitne',
+  blue:  'studium',
+};
+
+const {
+  title, description,
+  tone = 'coral',
+  tag, href = '#',
+  image,
+  illustration,
+  cardIndex = 0,
+} = Astro.props;
+
+function resolveIll(tone: string, stem?: string, idx: number = 0): string {
+  const dir   = TONE_DIR[tone];
+  const set   = ILLUSTRATIONS[tone];
+  const chosen = stem && set.includes(stem) ? stem : set[idx % set.length];
+  return `/illustrations/${dir}/${chosen}.svg`;
 }
-const dateLabel = formatDate(date);
+
+const illSrc = image ? '' : resolveIll(tone, illustration, cardIndex);
 ---
 
 <a href={href} class:list={['card', `card--${tone}`]}>
   {image
-    ? <div class="cover" style={`background-image: url(${image})`} />
-    : <div class="accent-bar" />
+    ? <div class="cover" style={`background-image: url(${image})`}></div>
+    : <div class="placeholder">
+        <img src={illSrc} alt="" class="ill" />
+      </div>
   }
   <div class="content">
-    <div class="meta">
-      {tag && <span class:list={['tag', `tag--${tone}`]}>{tag}</span>}
-      {dateLabel && <span class="date">{dateLabel}</span>}
-    </div>
+    {tag && <span class:list={['tag', `tag--${tone}`]}>{tag}</span>}
     <h3>{title}</h3>
     {description && <p>{description}</p>}
     <span class="more">Číst více →</span>
@@ -43,6 +80,7 @@ const dateLabel = formatDate(date);
   .card {
     display: flex;
     flex-direction: column;
+    height: 100%;            /* stretch in CSS grid */
     text-decoration: none;
     background: var(--surface-2);
     border: 0.5px solid var(--border);
@@ -58,13 +96,27 @@ const dateLabel = formatDate(date);
     box-shadow: var(--shadow-md);
   }
 
-  /* Top visual */
-  .cover    { aspect-ratio: 16/10; background-size: cover; background-position: center; }
-  .accent-bar { height: 5px; opacity: 0.45; flex-shrink: 0; }
-  .card--coral .accent-bar { background: var(--coral); }
-  .card--gold  .accent-bar { background: var(--gold);  }
-  .card--mint  .accent-bar { background: var(--mint);  }
-  .card--blue  .accent-bar { background: var(--blue);  }
+  /* Cover photo */
+  .cover {
+    aspect-ratio: 16 / 10;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+  }
+
+  /* Illustration placeholder — same 16:10 area */
+  .placeholder {
+    aspect-ratio: 16 / 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .card--coral .placeholder { background: var(--coral-bg); }
+  .card--gold  .placeholder { background: var(--gold-bg);  }
+  .card--mint  .placeholder { background: var(--mint-bg);  }
+  .card--blue  .placeholder { background: var(--blue-bg);  }
+  .ill { width: 50%; height: 50%; object-fit: contain; opacity: 0.72; }
 
   /* Body */
   .content {
@@ -89,27 +141,10 @@ const dateLabel = formatDate(date);
   .tag--mint  { background: var(--mint-bg);  color: var(--mint-text);  }
   .tag--blue  { background: var(--blue-bg);  color: var(--blue-text);  }
 
-  .meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .date {
-    display: inline-block;
-    font-size: var(--text-2xs);
-    font-weight: var(--weight-medium);
-    border-radius: var(--r-pill);
-    padding: 3px 10px;
-    background: var(--surface);
-    color: var(--muted);
-  }
-
   h3 { font-size: var(--text-h3); font-weight: var(--weight-medium); color: var(--text); margin: 0; }
   p  { color: var(--muted); font-size: var(--text-sm); line-height: 1.6; margin: 0; max-width: 38ch; }
 
-  /* "Číst více →" — appears on hover */
+  /* "Číst více →" — slides in on hover */
   .more {
     font-size: var(--text-xs);
     color: var(--muted);
