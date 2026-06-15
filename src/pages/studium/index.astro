@@ -4,7 +4,8 @@ import Layout from '../../layouts/Layout.astro';
 import SectionHeading from '../../components/SectionHeading.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 
-const entries = await getCollection('studium', ({ data }) => !data.draft);
+const entries = (await getCollection('studium', ({ data }) => !data.draft))
+  .sort((a, b) => (b.data.date ?? '').localeCompare(a.data.date ?? ''));
 const introEntry = await getEntry('intros', 'studium');
 const home = (await getEntry('intros', 'home'))!.data as Record<string, string>;
 const { Content: Intro } = await render(introEntry!);

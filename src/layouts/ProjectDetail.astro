@@ -31,7 +31,7 @@ const { title, description, tag, tone, image, date } = entry.data;
   <article class="detail">
 
     <nav class="breadcrumb">
-      <a href={backHref}>← {backLabel}</a>
+      <a href={backHref} id="back-link">← {backLabel}</a>
     </nav>
 
     {image && (
@@ -57,7 +57,7 @@ const { title, description, tag, tone, image, date } = entry.data;
     </div>
 
     <footer class="detail-footer">
-      <Button href={backHref} variant="ghost">← Zpět</Button>
+      <button class="btn-back" id="back-btn">← Zpět</button>
     </footer>
 
   </article>
@@ -156,6 +156,46 @@ const { title, description, tag, tone, image, date } = entry.data;
 
   /* Footer */
   .detail-footer { margin-top: var(--space-xl); }
+  .btn-back {
+    font-family: var(--font);
+    font-size: var(--text-sm);
+    color: var(--muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 0.15s;
+  }
+  .btn-back:hover { opacity: 0.7; }
+
+  /* Lightbox */
+  .prose :global(img) {
+    cursor: zoom-in;
+    border-radius: var(--r-sm);
+    transition: opacity 0.15s;
+  }
+  .prose :global(img:hover) { opacity: 0.9; }
+
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    cursor: zoom-out;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: var(--r-sm);
+    object-fit: contain;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+  }
 
   /* Mobile */
   @media (max-width: 640px) {
@@ -163,3 +203,47 @@ const { title, description, tag, tone, image, date } = entry.data;
     .lead { font-size: 1rem; }
   }
 </style>
+
+<!-- Lightbox overlay -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img" src="" alt="" />
+</div>
+
+<script>
+  // Zpět — použij historii prohlížeče, fallback na pevný odkaz
+  const backLink = document.getElementById('back-link') as HTMLAnchorElement;
+  const backBtn = document.getElementById('back-btn') as HTMLButtonElement;
+  const goBack = (e: Event) => {
+    if (document.referrer) {
+      e.preventDefault();
+      history.back();
+    }
+  };
+  backLink?.addEventListener('click', goBack);
+  backBtn?.addEventListener('click', () => {
+    if (document.referrer) history.back();
+    else window.location.href = backLink.href;
+  });
+
+  const lightbox = document.getElementById('lightbox')!;
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement;
+
+  // Kliknutí na obrázek v prose
+  document.querySelectorAll<HTMLImageElement>('.prose img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // Zavření kliknutím nebo Escape
+  lightbox.addEventListener('click', close);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+
+  function close() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>

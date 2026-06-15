@@ -24,6 +24,8 @@ interface Props {
   illustration?: string;
   /** Pořadí karty v sekci — pro automatickou rotaci ilustrací. */
   cardIndex?: number;
+  /** Datum ve formátu YYYY-MM — zobrazí se jako štítek vedle tagu. */
+  date?: string;
 }
 
 // Dostupné ilustrace per tón (stem → full public path)
@@ -49,6 +51,7 @@ const {
   image,
   illustration,
   cardIndex = 0,
+  date,
 } = Astro.props;
 
 function resolveIll(tone: string, stem?: string, idx: number = 0): string {
@@ -69,7 +72,10 @@ const illSrc = image ? '' : resolveIll(tone, illustration, cardIndex);
       </div>
   }
   <div class="content">
-    {tag && <span class:list={['tag', `tag--${tone}`]}>{tag}</span>}
+    <div class="meta-row">
+      {tag && <span class:list={['tag', `tag--${tone}`]}>{tag}</span>}
+      {date && <span class="date-pill">{date}</span>}
+    </div>
     <h3>{title}</h3>
     {description && <p>{description}</p>}
     <span class="more">Číst více →</span>
@@ -140,6 +146,23 @@ const illSrc = image ? '' : resolveIll(tone, illustration, cardIndex);
   .tag--gold  { background: var(--gold-bg);  color: var(--gold-text);  }
   .tag--mint  { background: var(--mint-bg);  color: var(--mint-text);  }
   .tag--blue  { background: var(--blue-bg);  color: var(--blue-text);  }
+
+  .meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .date-pill {
+    display: inline-block;
+    font-size: var(--text-2xs);
+    font-weight: var(--weight-medium);
+    border-radius: var(--r-pill);
+    padding: 3px 10px;
+    background: var(--surface);
+    color: var(--muted);
+    margin-left: auto;
+  }
 
   h3 { font-size: var(--text-h3); font-weight: var(--weight-medium); color: var(--text); margin: 0; }
   p  { color: var(--muted); font-size: var(--text-sm); line-height: 1.6; margin: 0; max-width: 38ch; }
