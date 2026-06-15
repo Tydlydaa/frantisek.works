@@ -1,15 +1,26 @@
 ---
 title: Závěrečný práce, čte to někdo?
-description: Pár myšlenek o psaní a čtení závěrečných prací.
+description: "Diplomka o otevřených datech v pražské dopravě — odeslaná adresátům o tři roky později."
 tag: Studijní seminář
 tone: blue
-date: "2024-06"
+date: "2022-01"
 draft: false
 ---
 
-Tvorba tohohle portfolia (pokolikátý už! mě někdo nutí se během studia veřejně prezentovat?) mě připomněla, že mě už 3 roky mrzí, že jsem nikdy nenasdílel diplomku lidem, pro který jsem ji psal. Psal jsem o otevřených datech v dopravě a úspěšných zahraničních opendatových inicativách. Všichni tři hodnotící byli z práce nadšení a ponoukali mě k publikaci, což jsem vyčerpaně odmítal. Ale měl jsem plán, že ji pošlu do institucí, který se v Praze otevřenými daty zabývají. A i na základě jejich dat jsem tu práci tehdy napsal.
+Tvorba tohohle portfolia mě připomněla, že mě už léta mrzí, že jsem nikdy nenasdílel diplomku lidem, pro který jsem ji psal. Tak jsem jim ji konečně poslal. O tři roky později.
 
-Tak dneska jsem jim konečně tu práci poslal. O tři roky později. A to to datový srovnání, který jsem vytvořil bylo zastaralý už při dopisování práce. <3
-Hodně práce pro nic! (Bohužel to by mohlo bejt moto hodně závěrečných prací, během jejich psaní získají autoři tolik frustrace, že už se s nimi vůbec nechtějí crcat dál.)
+---
 
-Chceš si ji přečíst? Tady: https://dspace.cuni.cz/handle/20.500.11956/171553
+Diplomovou práci jsem obhájil v roce 2022 na Studiích nových médií na Filozofické fakultě Univerzity Karlovy a dostal za ni výborně.
+
+Práce se jmenuje **Úspěšné zahraniční iniciativy otevřených dat — přenos zahraniční praxe při rozvoji udržitelné mobility v Praze** a zabývá se otevřenými daty, iniciativami otevřených dat a udržitelnou mobilitou.
+
+> Analyzuje současný stav otevřených dat v Praze a zkoumá úspěšné zahraniční iniciativy, které pracují s otevřenými daty a přispívají tak k udržitelné mobilitě. Autor částečně replikuje výzkum otevřených dat při rozvoji udržitelné mobility v devíti chytrých městech, rozšiřuje ho o Prahu a data mezi sebou porovnává. Skrze rozhovory se zástupci zahraničních iniciativ zkoumá roli, vznik, fungování a důležité aspekty života iniciativ otevřených dat na poli udržitelné mobility. Závěry z obou částí výzkumu propojuje s odbornou literaturou a představuje potenciál rozvoje otevřených dat a iniciativ pro Prahu.
+
+Všichni tři hodnotící byli z práce nadšení a ponoukali mě k publikaci, což jsem vyčerpaně odmítal. Měl jsem ale plán, že ji pošlu do institucí, které se v Praze otevřenými daty zabývají — a na základě jejich dat jsem tu práci tehdy i napsal.
+
+No a dneska jsem jim ji konečně poslal. O tři roky později. A datové srovnání, které jsem vytvořil, bylo zastaralé už při dopisování práce. ♥
+
+Hodně práce pro nic! (To by mohlo být motto spousty závěrečných prací — během psaní autoři nasbírají tolik frustrace, že se s nimi pak vůbec nechtějí dál crcat.)
+
+[Přečíst práci na dspace.cuni.cz](https://dspace.cuni.cz/handle/20.500.11956/171553)

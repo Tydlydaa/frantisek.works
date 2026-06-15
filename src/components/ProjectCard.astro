@@ -26,6 +26,8 @@ interface Props {
   cardIndex?: number;
   /** Datum ve formátu YYYY-MM — zobrazí se jako štítek vedle tagu. */
   date?: string;
+  /** Zobrazit obrázek/ilustraci? Default true. Na homepage false. */
+  showImage?: boolean;
 }
 
 // Dostupné ilustrace per tón (stem → full public path)
@@ -52,6 +54,7 @@ const {
   illustration,
   cardIndex = 0,
   date,
+  showImage = true,
 } = Astro.props;
 
 function resolveIll(tone: string, stem?: string, idx: number = 0): string {
@@ -65,12 +68,12 @@ const illSrc = image ? '' : resolveIll(tone, illustration, cardIndex);
 ---
 
 <a href={href} class:list={['card', `card--${tone}`]}>
-  {image
+  {showImage && (image
     ? <div class="cover" style={`background-image: url(${image})`}></div>
     : <div class="placeholder">
         <img src={illSrc} alt="" class="ill" />
       </div>
-  }
+  )}
   <div class="content">
     <div class="meta-row">
       {tag && <span class:list={['tag', `tag--${tone}`]}>{tag}</span>}

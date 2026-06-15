@@ -1,6 +1,6 @@
 ---
 title: Reflexe pátého a zimního semestru a studijních cílů
-description: Ohlédnutí za pátým semestrem studia a zhodnocení studijních cílů.
+description: "Škola přetavená do praxe: truhlářské studio, zárodek bakalářky o bydlení a marketing naživo."
 tag: Studijní seminář
 tone: blue
 date: "2025-02"

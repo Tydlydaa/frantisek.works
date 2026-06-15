@@ -1,6 +1,6 @@
 ---
 title: Reflexe letního semestru a vyhodnocení studijních cílů
-description: Vyhodnocení studijních cílů a ohlédnutí za letním semestrem.
+description: "O botech stahujících data ze školiček, Ganttových diagramech, které nechci — a workshopu pro státní tajemníky."
 tag: Studijní seminář
 tone: blue
 date: "2024-11"

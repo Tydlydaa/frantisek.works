@@ -1,6 +1,6 @@
 ---
 title: Co moje studijní cíle?
-description: Zamyšlení nad vlastními studijními cíli.
+description: "Jak se mi povedlo zaměřit studijní cíle na sociální inovace — a proč jsem je pak (skoro) nesplnil."
 tag: Studijní seminář
 tone: blue
 date: "2024-06"

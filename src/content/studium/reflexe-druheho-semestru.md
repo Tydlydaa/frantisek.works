@@ -1,6 +1,6 @@
 ---
 title: Reflexe druhého semestru studia Design informačních služeb
-description: Ohlédnutí za druhým semestrem studia Design informačních služeb.
+description: "Jak jsem místo plánovaných cílů zkoumal lidi, kteří mění státní správu zevnitř."
 tag: Studijní seminář
 tone: blue
 date: "2024-09"

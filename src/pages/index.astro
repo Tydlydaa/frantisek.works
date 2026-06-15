@@ -82,6 +82,7 @@ const worlds: World[] = [
               href={`/${w.id}/${p.slug}`}
               image={p.data.image}
               date={w.id === 'studium' ? p.data.date : undefined}
+              showImage={false}
             />
           ))}
         </div>

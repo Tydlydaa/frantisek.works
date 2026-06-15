@@ -36,7 +36,7 @@ const tags = [...new Set(entries.map(e => e.data.tag))].sort();
 
     <!-- Karty -->
     <div class="grid" id="grid">
-      {entries.map(p => (
+      {entries.map((p, i) => (
         <div class="card-wrap" data-tag={p.data.tag}>
           <ProjectCard
             tone="blue"
@@ -46,6 +46,7 @@ const tags = [...new Set(entries.map(e => e.data.tag))].sort();
             description={p.data.description}
             href={`/studium/${p.id}`}
             image={p.data.image}
+            cardIndex={i}
           />
         </div>
       ))}

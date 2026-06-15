@@ -1,6 +1,6 @@
 ---
 title: Reflexe posledního (VI semestru)
-description: Ohlédnutí za posledním, šestým semestrem studia.
+description: "Bakalářka Bydlo, jazykové modely jako denní nástroj a workshop o budoucnosti festivalu."
 tag: Studijní seminář
 tone: blue
 date: "2025-06"
