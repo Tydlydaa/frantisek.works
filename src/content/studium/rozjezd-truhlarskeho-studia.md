@@ -51,3 +51,8 @@ Pár fotek z procesu workshopu a hotová postel tu:
 ![](/img/rozjezd-truhlarskeho-studia/07.jpg)
 
 ![](/img/rozjezd-truhlarskeho-studia/08.jpg)
+
+
+Update 06/2026 - Už jsme s tím šli ven a dá se na to koukat tady: https://www.instagram.com/cehotreba/
+
+**508 mm × 285.75 mm**

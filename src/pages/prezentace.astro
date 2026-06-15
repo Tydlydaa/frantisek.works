@@ -11,10 +11,18 @@ import Layout from '../layouts/Layout.astro';
 import { getEntry, render } from 'astro:content';
 
 const ITEMS: { collection: 'hlavou' | 'rukama' | 'komunitne' | 'studium'; slug: string }[] = [
+  { collection: 'studium', slug: 'co-moje-studijni-cile' },
+  { collection: 'studium', slug: 'jak-jsme-rozsirili-vyzkum-o-bariery' },
+  { collection: 'studium', slug: 'jak-jsme-s-drymtymem-skoro-nic-neudelali' },
+  { collection: 'studium', slug: 'reflexe-praxe-iv-workshop-pro-tajemniky' },
+  { collection: 'studium', slug: 'camp-cx-blueprint' },
   { collection: 'studium', slug: 'partyzanska-stezka' },
-  { collection: 'studium', slug: 'rozjezd-truhlarskeho-studia' },
   { collection: 'studium', slug: 'test-pristupnosti-dvorek' },
-  { collection: 'studium', slug: 'romanticti-spisovatele' },
+  { collection: 'studium', slug: 'kod-ve-vytahu' },
+  { collection: 'studium', slug: 'rozjezd-truhlarskeho-studia' },
+  { collection: 'studium', slug: 'reflexe-posledniho-vi-semestru' },
+  { collection: 'studium', slug: 'bydlo-prezentace' },
+  { collection: 'studium', slug: 'co-moje-studijni-cile' },
 ];
 
 const slides = await Promise.all(
