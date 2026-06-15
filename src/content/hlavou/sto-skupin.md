@@ -1,17 +1,11 @@
 ---
 title: Sto skupin
-description: Návrh a facilitace skupinové práce ve velkém měřítku.
+description: Síť dětských skupinek a lesní školky, kterou jsem spoluzaložil a kde jsem provozní ředitel.
 tag: Service design
 tone: coral
-date: "2024-05"
+draft: false
 ---
 
-Projekt zaměřený na facilitaci a strukturování práce ve velkých skupinách. Kombinuje metody service designu s facilitačními technikami pro práci s desítkami až stovkami lidí najednou.
+[Sto skupin](https://stoskupin.cz) je síť dětských skupinek a lesní školky, kterou jsem spoluzaložil a kde dlouhodobě působím jako provozní ředitel.
 
-## Co bylo výzvou
-
-Udržet kvalitu výstupu při rostoucím počtu lidí. Standardní facilitační metody nefungují nad určitou velikost skupiny.
-
-## Přístup
-
-Vícevrstvá facilitační struktura — malé pracovní skupiny + koordinační vrstva + výstupní syntéza. Iterativní ladění formátu na základě zpětné vazby.
+Stojím za nastavením a chodem provozu — od strategie až po každodenní fungování jednotlivostí v provozu. Hodně času věnuji tomu, aby skupinky měly dost dětí, fungovaly kvalitně a aby tým, který se denně stará o děti, měl dobré zázemí. To všechno ve spolupráci se skvělým kmenovým týmem, s kterým organizaci budujeme.
