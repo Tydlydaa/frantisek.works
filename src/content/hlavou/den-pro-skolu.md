@@ -1,9 +1,7 @@
 ---
 title: Den pro školu
-description: TODO — krátký popis projektu (1–2 věty), zobrazí se na kartě.
+description: Projekt propojující firmy a školy skrze dobrovolnické dny — od výzkumu po pilotování.
 tag: Service design
 tone: coral
 draft: false
 ---
-
-TODO — napiš sem text projektu.

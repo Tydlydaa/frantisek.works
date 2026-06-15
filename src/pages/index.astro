@@ -7,12 +7,17 @@ import ProjectCard from '../components/ProjectCard.astro';
 import { getCollection, getEntry } from 'astro:content';
 
 // Načti projekty (max 3 na sekci pro homepage preview)
-const [hlavou, rukama, komunitne, studium] = await Promise.all([
+const HLAVOU_ORDER = ['designer', 'sto-skupin', 'bydlo'];
+const [hlavouRaw, rukama, komunitne, studium] = await Promise.all([
   getCollection('hlavou',    ({ data }) => !data.draft),
   getCollection('rukama',    ({ data }) => !data.draft),
   getCollection('komunitne', ({ data }) => !data.draft),
   getCollection('studium',   ({ data }) => !data.draft).then(e => e.sort((a, b) => (b.data.date ?? '').localeCompare(a.data.date ?? ''))),
 ]);
+const hlavou = [
+  ...HLAVOU_ORDER.map(id => hlavouRaw.find(e => e.id === id)).filter(Boolean) as typeof hlavouRaw,
+  ...hlavouRaw.filter(e => !HLAVOU_ORDER.includes(e.id)),
+];
 
 const home = (await getEntry('intros', 'home'))!.data as Record<string, string>;
 
@@ -79,7 +84,7 @@ const worlds: World[] = [
               tag={p.data.tag}
               title={p.data.title}
               description={p.data.description}
-              href={`/${w.id}/${p.id}`}
+              href={(p.data as any).href ?? `/${w.id}/${p.id}`}
               image={p.data.image}
               date={w.id === 'studium' ? p.data.date : undefined}
               showImage={false}

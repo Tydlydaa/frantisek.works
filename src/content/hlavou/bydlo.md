@@ -1,9 +1,8 @@
 ---
 title: Bydlo
-description: TODO — krátký popis projektu (1–2 věty), zobrazí se na kartě.
+description: Matchmaking platforma spojující lidi s architekty a interiérovými designéry. Bakalářský projekt i startup.
 tag: Service design
 tone: coral
+href: /studium/bydlo-prezentace
 draft: false
 ---
-
-TODO — napiš sem text projektu.
