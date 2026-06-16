@@ -11,7 +11,7 @@ const HLAVOU_ORDER = ['designer', 'sto-skupin', 'bydlo'];
 const [hlavouRaw, rukama, komunitne, studium] = await Promise.all([
   getCollection('hlavou',    ({ data }) => !data.draft),
   getCollection('rukama',    ({ data }) => !data.draft),
-  getCollection('komunitne', ({ data }) => !data.draft),
+  getCollection('komunitne', ({ data }) => !data.draft && !data.unlisted),
   getCollection('studium',   ({ data }) => !data.draft).then(e => e.sort((a, b) => (b.data.date ?? '').localeCompare(a.data.date ?? ''))),
 ]);
 const hlavou = [

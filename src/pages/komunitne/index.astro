@@ -3,7 +3,7 @@
 import { getCollection, getEntry, render } from 'astro:content';
 import SectionIndex from '../../layouts/SectionIndex.astro';
 
-const entries = await getCollection('komunitne', ({ data }) => !data.draft);
+const entries = await getCollection('komunitne', ({ data }) => !data.draft && !data.unlisted);
 const introEntry = await getEntry('intros', 'komunitne');
 const home = (await getEntry('intros', 'home'))!.data as Record<string, string>;
 const { Content: Intro } = await render(introEntry!);

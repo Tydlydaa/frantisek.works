@@ -10,6 +10,7 @@ const projectSchema = z.object({
   image:       z.string().optional(),
   href:        z.string().optional(),
   draft:       z.boolean().default(false),
+  unlisted:    z.boolean().default(false),
 });
 
 export const collections = {
