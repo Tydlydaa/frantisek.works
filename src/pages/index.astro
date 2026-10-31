@@ -2,56 +2,13 @@
 // src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
-import SectionHeading from '../components/SectionHeading.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import { getCollection, getEntry } from 'astro:content';
-
-// Načti projekty (max 3 na sekci pro homepage preview)
-const HLAVOU_ORDER = ['designer', 'sto-skupin', 'bydlo'];
-const [hlavouRaw, rukama, komunitne, studium] = await Promise.all([
-  getCollection('hlavou',    ({ data }) => !data.draft),
-  getCollection('rukama',    ({ data }) => !data.draft),
-  getCollection('komunitne', ({ data }) => !data.draft && !data.unlisted),
-  getCollection('studium',   ({ data }) => !data.draft).then(e => e.sort((a, b) => (b.data.date ?? '').localeCompare(a.data.date ?? ''))),
-]);
-const hlavou = [
-  ...HLAVOU_ORDER.map(id => hlavouRaw.find(e => e.id === id)).filter(Boolean) as typeof hlavouRaw,
-  ...hlavouRaw.filter(e => !HLAVOU_ORDER.includes(e.id)),
-];
+import { getEntry } from 'astro:content';
 
 const home = (await getEntry('intros', 'home'))!.data as Record<string, string>;
-
-const PREVIEW = 3; // kolik karet zobrazit na homepage
-
-type World = {
-  id: string;
-  eyebrow: string;
-  tone: 'coral' | 'gold' | 'mint' | 'blue';
-  title: string;
-  intro: string;
-  allHref: string;
-  entries: typeof hlavou;
-};
-
-const worlds: World[] = [
-  { id:'hlavou',    eyebrow:'Hlavou',             tone:'coral', title: home.hlavou_title,
-    intro: home.hlavou_intro,
-    allHref:'/hlavou', entries: hlavou },
-  { id:'rukama',    eyebrow:'Rukama',             tone:'gold',  title: home.rukama_title,
-    intro: home.rukama_intro,
-    allHref:'/rukama', entries: rukama },
-  { id:'komunitne', eyebrow:'Komunitně',          tone:'mint',  title: home.komunitne_title,
-    intro: home.komunitne_intro,
-    allHref:'/komunitne', entries: komunitne },
-  { id:'studium',   eyebrow:'Studijní portfolio', tone:'blue',  title: home.studium_title,
-    intro: home.studium_intro,
-    allHref:'/studium', entries: studium },
-];
 ---
 
 <Layout title="František Pfann">
 
-  <!-- ── Hero ───────────────────────────────── -->
   <section class="hero">
     <div class="hero-bars" aria-hidden="true">
       <span style="background:var(--coral)"></span>
@@ -64,56 +21,14 @@ const worlds: World[] = [
     <p class="sub">{home.hero_sub}</p>
     <div class="cta-row">
       <Button variant="solid" href="/kontakt">Napsat mi</Button>
-      <Button href="#hlavou">Co dělám</Button>
     </div>
   </section>
-
-  <!-- ── World sections ────────────────────── -->
-  {worlds.map(w => {
-    const preview = w.entries.slice(0, PREVIEW);
-    const hasMore = w.entries.length > PREVIEW;
-    return (
-      <section id={w.id} class="world-section">
-        <SectionHeading eyebrow={w.eyebrow} tone={w.tone} title={w.title} />
-        <p class="intro">{w.intro}</p>
-
-        <div class="grid">
-          {preview.map(p => (
-            <ProjectCard
-              tone={w.tone}
-              tag={p.data.tag}
-              title={p.data.title}
-              description={p.data.description}
-              href={(p.data as any).href ?? `/${w.id}/${p.id}`}
-              image={p.data.image}
-              date={w.id === 'studium' ? p.data.date : undefined}
-              showImage={false}
-            />
-          ))}
-        </div>
-
-        {/* "Více" footer — vždy viditelný počet + odkaz */}
-        <div class="section-footer">
-          <span class="count">
-            {w.entries.length} {w.entries.length === 1 ? 'projekt' : w.entries.length < 5 ? 'projekty' : 'projektů'}
-          </span>
-          {hasMore && (
-            <a href={w.allHref} class="all-link">
-              Zobrazit vše →
-            </a>
-          )}
-        </div>
-      </section>
-    );
-  })}
 
 </Layout>
 
 <style>
-  /* Hero */
   .hero {
     padding: var(--space-xl) 0 var(--space-lg);
-    position: relative;
   }
   .hero-bars { display: flex; gap: 8px; margin-bottom: 22px; }
   .hero-bars span { width: 28px; height: 5px; border-radius: 2px; display: block; }
@@ -140,55 +55,10 @@ const worlds: World[] = [
   }
   .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
 
-  /* World section */
-  .world-section {
-    padding: var(--space-xl) 0;
-    border-top: 0.5px solid var(--border);
-  }
-  .intro {
-    font-size: 1.05rem;
-    line-height: var(--lh);
-    color: var(--muted);
-    max-width: 56ch;
-    margin: 0 0 28px;
-  }
-
-  /* Grid */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 14px;
-  }
-
-  /* Section footer */
-  .section-footer {
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
-    margin-top: 18px;
-  }
-  .count {
-    font-size: var(--text-xs);
-    letter-spacing: 0.04em;
-    color: var(--muted);
-  }
-  .all-link {
-    font-size: var(--text-sm);
-    font-weight: var(--weight-medium);
-    color: var(--text);
-    text-decoration: none;
-    opacity: 0.7;
-    transition: opacity var(--dur-fast) var(--ease);
-  }
-  .all-link:hover { opacity: 1; }
-
-  /* Mobile */
   @media (max-width: 640px) {
     .hero { padding: var(--space-lg) 0; }
     h1 { font-size: clamp(2rem, 9vw, 2.6rem); }
     .lead { font-size: 1rem; }
     .sub { font-size: 0.95rem; }
-    .grid { grid-template-columns: 1fr; }
-    .world-section { padding: var(--space-lg) 0; }
   }
 </style>
